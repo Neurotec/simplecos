@@ -14,7 +14,7 @@
 
 	<% @client_cashes.each do |client_cash| %>
 	<tr>
-	  <td><%= client_cash.client.name %></td>
+	  <td><%= client_cash.client.name if client_cash.client %></td>
 	  <td><%= client_cash.amount %></td>
 	  <td><%= link_to I18n.t('show'), client_cash %></td>
 	  <td><%= link_to I18n.t('edit'), edit_client_cash_path(client_cash) %></td>
