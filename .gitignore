@@ -17,3 +17,6 @@
 *#
 .#*
 *~
+**.lock
+/db/schema.db
+/log/*.pid

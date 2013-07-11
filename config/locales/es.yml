@@ -3,10 +3,15 @@ es:
   edit: 'Editar'
   destroy: 'Eliminar'
   back: 'Atras'
+  clone: 'Clonar'
   are_you_sure: 'Esta usted seguro(a)?'
+  default: 'Por defecto'
   devise:
     failure:
       already_authenticated: 'Ya esta autenticado(a)'
+      consumers_client:
+        unauthenticated: 'Sin autenticar'
+        invalid: 'Correo-E o Contraseña esta invalido'
       user:
         invalid: 'Correo-E o Contraseña esta invalido'
   activerecord:
@@ -22,6 +27,7 @@ es:
     attributes:
       consumers_request_cash:
         amount: 'Dinero'
+        note: 'Notas'
       user:
         email: 'Correo-E'
         password: 'Contraseña'
@@ -49,8 +55,10 @@ es:
         public_carrier_id: 'Pasarela Externa'
         expression: 'Regexp Freeswitch'
         bill_rate: 'Facturación por unidad'
-        bill_minimum: 'Facturación minima'
+        bill_minimum: 'Facturación minima (seg)'
         bridge: 'Bridge'
+        name: 'Nombre'
+        note: 'Notas'
       client_cash_plan:
         client_id: 'Cliente'
         public_carrier_id: 'Pasarela Externa'
@@ -58,6 +66,8 @@ es:
         bill_rate: 'Facturación por unidad'
         bill_minimum: 'Facturación minima'
         bridge: 'Bridge'
+        name: 'Nombre'
+        note: 'Notas'
       public_carrier:
         freeswitch_id: 'Freeswitch'
         name: 'Nombre'
@@ -99,6 +109,8 @@ es:
       bill_rate: 'Facturación por unidad'
       bill_minimum: 'Facturación minima'
       bridge: 'Bridge'
+      name: 'Nombre'
+      note: 'Notas'
     index:
       title: 'Planes de facturación'
     new:
@@ -126,12 +138,13 @@ es:
       sip_pass: 'SIP acceso'
       public_carrier: 'Pasarela Externa'
       balance: 'Balance'
-      total_amount: 'Total de recargado'
+      total_amount: 'Historia total recargado'
       email: 'Correo-E'
       sip_server: 'SIP servidor'
       max_calls: 'Limite de Canales'
       proxy_media: 'Proxy Media(RTP)'
       bypass_media: 'Bypass Media(RTP)(Solo Señalización)'
+      mode_media: 'Media'
     new:
       title: 'Nuevx cliente'
     index:
@@ -160,7 +173,7 @@ es:
     l:
       client: 'Cliente'
       amount: 'Dinero'
-      note: 'Nota'
+      note: 'Notas'
     index:
       title: 'Lista de peticiones'
     new:
@@ -181,6 +194,8 @@ es:
       expression: 'Regexp Freeswitch'
       bill_rate: 'Facturación por unidad'
       bill_minimum: 'Facturación minima'
+      name: 'Nombre'
+      note: 'Notas'
       bridge: 'Bridge'
     new:
       title: 'Nuevo plan personal'
@@ -188,3 +203,8 @@ es:
       title: 'Plan de fact.'
     edit:
       title: 'Plan de fact.'
+  email:
+    balance_out_email:
+      subject: 'Sin balance'
+    balance_in_email:
+      subject: 'De nuevo con balance'

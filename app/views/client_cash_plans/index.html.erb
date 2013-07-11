@@ -1,12 +1,13 @@
-<h1><%= I18n.t('client_cash_plan.index.title')%></h1>
+<h1><%= I18n.t('client_cash_plan.index.title')%> <%= @client.name %></h1>
 
+<%= link_to I18n.t('client_cash_plan.new.title'), new_client_cash_plan_path(:client_id => params[:client_id]) %>
+<br />
 <table>
   <tr>
-    <th><%= I18n.t('client_cash_plan.l.client')%></th>
-    <th><%= I18n.t('client_cash_plan.l.expression')%></th>
+    <th><%= I18n.t('client_cash_plan.l.name')%></th>
     <th><%= I18n.t('client_cash_plan.l.bill_rate')%></th>
     <th><%= I18n.t('client_cash_plan.l.bill_minimum')%></th>
-    <th><%= I18n.t('client_cash_plan.l.public_carrier')%></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,19 +15,18 @@
 
 <% @client_cash_plans.each do |client_cash_plan| %>
   <tr>
-    <td><%= client_cash_plan.client_id %></td>
-    <td><%= client_cash_plan.expression %></td>
+    <td><%= client_cash_plan.name.empty? ? client_cash_plan.expression : client_cash_plan.name %></td>
     <td><%= client_cash_plan.bill_rate %></td>
     <td><%= client_cash_plan.bill_minimum %></td>
-    <td><%= client_cash_plan.bridge %></td>
-    <td><%= client_cash_plan.public_carrier_id %></td>
     <td><%= link_to I18n.t('show'), client_cash_plan %></td>
     <td><%= link_to I18n.t('edit'), edit_client_cash_plan_path(client_cash_plan) %></td>
     <td><%= link_to I18n.t('destroy'), client_cash_plan, method: :delete, data: { confirm: I18n.t('are_you_sure') } %></td>
+    <td><%= link_to I18n.t('clone'), client_cash_plan_clone_path(client_cash_plan) %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<%= will_paginate @client_cash_plans%>
 
-<%= link_to I18n.t('client_cash_plan.new.title'), new_client_cash_plan_path(:client_id => params[:client_id]) %>
+
+
