@@ -6,6 +6,7 @@ class Consumers::CdrController < Consumers::ApplicationController
     @cdr_months = Dir.glob(Rails.root.join(cdr_dir, "month_*"))
     @cdr_days = Dir.glob(Rails.root.join(cdr_dir,  "day_*"))
     @cdr_weeks = Dir.glob(Rails.root.join(cdr_dir,  "week*"))
+
   end
 
   def send_cdr
