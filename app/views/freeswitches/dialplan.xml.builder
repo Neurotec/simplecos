@@ -54,16 +54,21 @@ xml.document :type => 'freeswitch/xml' do
           end
         end
         
-        clients = Client.find(simplecos_account)
-        ClientCashPlan.where(:client_id => clients).all.each do |client_cash_plan|
+        client = Client.find(simplecos_account)
+        ClientCashPlan.where(:client_id => client).all.each do |client_cash_plan|
           stop_public_cash_plan = true
           xml.extension :name => 'simplecos_%d_client' % client_cash_plan.public_carrier_id do
             xml.condition :field => 'destination_number', :expression => client_cash_plan.expression do
               #no se usa pero se envia por si algo
+              xml.action :application => 'export', :data => "simplecos_client_cash_plan=#{client_cash_plan.id}"
+              xml.action :application => 'export', :data => "nibble_rate=#{client_cash_plan.bill_rate}"
+              xml.action :application => 'export', :data => "accountcode=#{client.accountcode}"
               xml.action :application => 'set', :data => "simplecos_client_cash_plan=#{client_cash_plan.id}"
               xml.action :application => 'set', :data => "nibble_rate=#{client_cash_plan.bill_rate}"
               xml.action :application => 'set', :data => 'nibble_account=${user_data(${caller_id_number}@${domain_name} var nibble_account)}'
-
+              xml.action :application => 'set', :data => "accountcode=#{client.accountcode}"
+              xml.action :application => 'set', :data => "hangup_after_bridge=true"
+              
               if client_cash_plan.bill_minimum > 0
                 xml.action :application => 'set', :data => "nibble_increment=#{client_cash_plan.bill_minimum}"
               end
@@ -79,39 +84,62 @@ xml.document :type => 'freeswitch/xml' do
 
       end
       
-  xml.extension :name => 'test' do
-        xml.condition :field => 'destination_number', :expression => '8888' do
-          xml.action :application => 'set', :data => "simplecos_cash_plan=%d" % PublicCashPlan.first.id
-          xml.action :application => 'set', :data => 'nibble_bill_rate=10'
-          xml.action :application => 'set', :data => 'nibble_account=${user_data(${caller_id_number}@${domain_name} var nibble_account)}'
-          xml.action :application => 'answer'
-          xml.action :application => 'phrase', :data => 'msgcount,10'
-          xml.action :application => 'hangup'
-        end
-      end
-      
-      @freeswitch.public_carriers.each{|carrier|
-        break if stop_public_cash_plan
-        carrier.public_cash_plans.each{|cash_plan|
-          xml.extension :name => 'simplecos_%d' % cash_plan.id do
-            xml.condition :field => 'destination_number', :expression => cash_plan.expression do
-              #no se usa pero se envia por si algo
-              xml.action :application => 'set', :data => "simplecos_cash_plan=#{cash_plan.id}"
-              xml.action :application => 'set', :data => "nibble_rate=#{cash_plan.bill_rate}"
-              xml.action :application => 'set', :data => 'nibble_account=${user_data(${caller_id_number}@${domain_name} var nibble_account)}'
-              if cash_plan.bill_minimum > 0
-                xml.action :application => 'set', :data => "nibble_increment=#{cash_plan.bill_minimum}"
-              end
+      #DE PRUEBA
 
-              if not cash_plan.bridge.empty?
-                xml.action :application => 'bridge', :data => cash_plan.bridge
-              else
-                xml.action :application => 'bridge', :data => "sofia/gateway/#{carrier.name}/$1"
+#      xml.extension :name => 'test' do
+#        xml.condition :field => 'destination_number', :expression => '9999' do
+#          xml.action :application => 'answer'
+#          xml.action :application => 'phrase', :data => 'msgcount,10'
+#          xml.action :application => 'hangup'
+#        end
+#      end
+#      unless PublicCashPlan.first.nil?
+#        xml.extension :name => 'test' do
+#          xml.condition :field => 'destination_number', :expression => '8888' do
+#            xml.action :application => 'set', :data => "simplecos_cash_plan=%d" % PublicCashPlan.first.id
+#            xml.action :application => 'set', :data => 'nibble_bill_rate=10'
+#            xml.action :application => 'set', :data => 'nibble_account=${user_data(${caller_id_number}@${domain_name} v#ar nibble_account)}'
+#            xml.action :application => 'answer'
+#            xml.action :application => 'phrase', :data => 'msgcount,10'
+#            xml.action :application => 'hangup'
+#          end
+#        end
+#      end
+   
+      #Tarificacion generica, o bien cuando el cliente
+      #no tiene asignado un plan de marcado
+
+      @freeswitch.sip_profiles.each{|sip_profile|
+        sip_profile.public_carriers.each{|carrier|
+          break if stop_public_cash_plan
+          carrier.public_cash_plans.each{|cash_plan|
+            xml.extension :name => 'simplecos_%d' % cash_plan.id do
+              xml.condition :field => 'destination_number', :expression => cash_plan.expression do
+                #no se usa pero se envia por si algo
+                xml.action :application => 'export', :data => "simplecos_cash_plan=#{cash_plan.id}"
+                xml.action :application => 'export', :data => "nibble_rate=#{cash_plan.bill_rate}"
+                xml.action :application => 'set', :data => "simplecos_cash_plan=#{cash_plan.id}"
+                xml.action :application => 'set', :data => "nibble_rate=#{cash_plan.bill_rate}"
+                xml.action :application => 'set', :data => 'nibble_account=${user_data(${caller_id_number}@${domain_name} var nibble_account)}'
+                xml.action :application => 'set', :data => "hangup_after_bridge=true"
+
+                if cash_plan.bill_minimum > 0
+                  xml.action :application => 'set', :data => "nibble_increment=#{cash_plan.bill_minimum}"
+                end
+                
+                if not cash_plan.bridge.empty?
+                  xml.action :application => 'bridge', :data => cash_plan.bridge
+                else
+                  xml.action :application => 'bridge', :data => "sofia/gateway/#{carrier.to_bridge}/$1"
+                end
               end
             end
-        end
+          }
         }
       }
+
+
     end
+
   end
 end

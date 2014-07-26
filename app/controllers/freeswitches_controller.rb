@@ -126,12 +126,16 @@ class FreeswitchesController < ApplicationController
     authenticate_freeswitch_by_ip
     @freeswitch = Freeswitch.find_by_ip(params['FreeSWITCH-IPv4'])
     @data = params
+
     if @data['section'] == 'configuration' and @data['key_value'] == 'sofia.conf'
+      return render :template => 'freeswitches/not_response' if @freeswitch.nil?
       configuration_sofia
     elsif @data['section'] == 'configuration' and @data['key_value'] == 'nibblebill_curl.conf'
       configuration_nibblebill_curl
     elsif @data['section'] == 'configuration' and @data['key_value'] == 'xml_cdr.conf'
       configuration_xml_cdr
+    elsif @data['section'] == 'configuration' and @data['key_value'] == 'distributor.conf'
+      configuration_distributor
     else
       respond_to do |format|
         format.xml
@@ -140,19 +144,20 @@ class FreeswitchesController < ApplicationController
   end
   
   def configuration_sofia
-    if @data['profile'] == 'external' 
-      render :template => 'freeswitches/configuration/external',  :layout => 'fsxml/sofia_conf'
-    else
-      render :template => 'freeswitches/not_response'
-    end
+    render :template => 'freeswitches/configuration/gateways', :layout => 'fsxml/sofia_conf'
   end
-
+  
   def configuration_nibblebill_curl
     render :template => 'freeswitches/configuration/nibblebill_curl', :layout => 'fsxml/xml_curl'
   end
   
   def configuration_xml_cdr
     render :template => 'freeswitches/configuration/xml_cdr', :layout => 'fsxml/xml_curl'
+  end
+
+  def configuration_distributor
+    @public_carriers = PublicCarrier.all
+    render :template => 'freeswitches/configuration/distributor', :layout => 'fsxml/xml_curl'
   end
   
   #GET,POST

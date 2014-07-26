@@ -1,0 +1,5 @@
+<h1>New trunk: <%= @trunk.public_carrier.name%></h1>
+
+<%= render 'form' %>
+
+<%= link_to I18n.t('back'), trunks_path(:public_carrier_id => @trunk.public_carrier.id) %>

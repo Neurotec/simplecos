@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710210845) do
+ActiveRecord::Schema.define(:version => 20131010175431) do
 
   create_table "client_cash_plans", :force => true do |t|
     t.integer  "client_id"
@@ -35,30 +35,8 @@ ActiveRecord::Schema.define(:version => 20130710210845) do
 
   add_index "client_cashes", ["client_id"], :name => "index_client_cashes_on_client_id"
 
-  create_table "clients", :force => true do |t|
-    t.string   "name"
-    t.string   "hashed_password"
-    t.string   "sip_user"
-    t.string   "sip_pass"
-    t.integer  "public_carrier_id"
-    t.float    "balance",                :default => 0.0
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
-    t.string   "salt",                   :default => ""
-    t.string   "email",                  :default => "",    :null => false
-    t.string   "encrypted_password",     :default => "",    :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.integer  "max_calls",              :default => 1
-    t.boolean  "proxy_media",            :default => false
-    t.boolean  "bypass_media",           :default => false
-  end
+# Could not dump table "clients" because of following StandardError
+#   Unknown type 'bool' for column 'allow_admin_sip_accounts'
 
   create_table "consumers_request_cashes", :force => true do |t|
     t.integer  "client_id"
@@ -100,12 +78,10 @@ ActiveRecord::Schema.define(:version => 20130710210845) do
     t.boolean  "authenticate"
     t.string   "ip"
     t.integer  "port"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "freeswitch_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "sip_profile_id"
   end
-
-  add_index "public_carriers", ["freeswitch_id"], :name => "index_public_carriers_on_freeswitch_id"
 
   create_table "public_cash_plans", :force => true do |t|
     t.integer  "public_carrier_id"
@@ -131,6 +107,50 @@ ActiveRecord::Schema.define(:version => 20130710210845) do
     t.integer "role_id"
     t.integer "user_id"
   end
+
+  create_table "sip_clients", :force => true do |t|
+    t.integer  "client_id"
+    t.string   "sip_pass"
+    t.string   "sip_user"
+    t.integer  "max_calls"
+    t.string   "proxy_media"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "caller_name",   :default => ""
+    t.string   "caller_number", :default => "000000"
+  end
+
+  add_index "sip_clients", ["client_id"], :name => "index_sip_clients_on_client_id"
+
+  create_table "sip_profiles", :force => true do |t|
+    t.string   "name"
+    t.string   "inbound_codec"
+    t.string   "outbound_codec"
+    t.string   "rtp_ip"
+    t.string   "sip_ip"
+    t.integer  "sip_port"
+    t.integer  "freeswitch_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "sip_profiles", ["freeswitch_id"], :name => "index_sip_profiles_on_freeswitch_id"
+
+  create_table "trunks", :force => true do |t|
+    t.string   "name"
+    t.string   "ip"
+    t.string   "port"
+    t.string   "sip_user"
+    t.string   "sip_pass"
+    t.boolean  "authenticate",      :default => false
+    t.string   "bridge"
+    t.integer  "public_carrier_id"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.integer  "weight",            :default => 1
+  end
+
+  add_index "trunks", ["public_carrier_id"], :name => "index_trunks_on_public_carrier_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

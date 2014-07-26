@@ -1,0 +1,19 @@
+<%= simple_form_for(@trunk) do |f| %>
+  <% if @trunk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trunk.errors.count, "error") %> prohibited this trunk from being saved:</h2>
+
+      <ul>
+      <% @trunk.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render 'form_fields', :f => f%>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

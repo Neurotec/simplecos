@@ -6,6 +6,9 @@ es:
   clone: 'Clonar'
   are_you_sure: 'Esta usted seguro(a)?'
   default: 'Por defecto'
+  created_at: 'Creado el'
+  'yes': 'Si'
+  'no': 'No'
   devise:
     failure:
       already_authenticated: 'Ya esta autenticado(a)'
@@ -24,10 +27,16 @@ es:
       freeswitch: 'Freeswitch'
       users: 'Usuarixs'
       consumers_request_cash: 'Petición de recarga'
+      trunk: 'Troncal'
     attributes:
       consumers_request_cash:
         amount: 'Dinero'
         note: 'Notas'
+      trunk:
+        name: 'Nombre'
+        ip: 'IP'
+        port: 'Puerto'
+        authenticate: 'Autenticar?'
       user:
         email: 'Correo-E'
         password: 'Contraseña'
@@ -48,6 +57,8 @@ es:
         max_calls: 'Limite de Canales'
         proxy_media: 'Proxy Media(RTP)'
         bypass_media: 'Bypass Media(RTP)(Solo Señalización)'
+        accountcode: 'Codigo de cuenta'
+        allow_admin_sip_accounts: 'Administrar sus cuentas SIP?'
       client_cash:
         client_id: 'Cliente'
         amount: 'Dinero'
@@ -64,7 +75,7 @@ es:
         public_carrier_id: 'Pasarela Externa'
         expression: 'Regexp Freeswitch'
         bill_rate: 'Facturación por unidad'
-        bill_minimum: 'Facturación minima'
+        bill_minimum: 'Facturación minima (seg)'
         bridge: 'Bridge'
         name: 'Nombre'
         note: 'Notas'
@@ -76,6 +87,16 @@ es:
         authenticate: 'Autenticar?'
         ip: 'IP'
         port: 'Puerto'
+        sip_profile_id: 'Perfil SIP'
+        trunks: 'Troncales'
+      sip_client:
+        sip_user: 'Cuenta SIP'
+        sip_pass: 'Clave SIP'
+        proxy_media: 'Proxy Media'
+        max_calls: 'Max canales'
+        client: 'Cliente'
+        caller_name: 'Nombre en llamada'
+        caller_number: 'Número en llamada'
   menu:
    quit: 'Salir'
    users: 'Usuarixs'
@@ -87,6 +108,8 @@ es:
    dashboard: 'Estado Actual'
    request_cash: 'Petición de recarga'
    cdr: 'CDR'
+   sip_profiles: 'Perfiles SIP'
+   sip_clients: 'Cuentas SIP'
   public_carrier:
     l:
       freeswitch: 'Freeswitch'
@@ -96,6 +119,9 @@ es:
       authenticate: 'Autenticar?'
       ip: 'IP'
       port: 'Puerto'
+      sip_profile: 'Perfil SIP'
+      trunks: 'Troncales'
+      trunk: 'Troncal'
     index:
       title: 'Listando pasarelas externas'
     edit:
@@ -145,6 +171,8 @@ es:
       proxy_media: 'Proxy Media(RTP)'
       bypass_media: 'Bypass Media(RTP)(Solo Señalización)'
       mode_media: 'Media'
+      accountcode: 'Codigo de cuenta'
+      allow_admin_sip_accounts: 'Administrar sus cuentas SIP?'
     new:
       title: 'Nuevx cliente'
     index:
@@ -208,3 +236,31 @@ es:
       subject: 'Sin balance'
     balance_in_email:
       subject: 'De nuevo con balance'
+  sip_clients:
+    l:
+      caller_name: 'Nombre en Llamada'
+      caller_number: 'Número en Llamada'
+      sip_user: 'Cuenta SIP'
+      sip_pass: 'Clave SIP'
+      proxy_media: 'Proxy Media'
+      max_calls: 'Max canales'
+      client: 'Cliente'
+    index:
+      title: 'Cuentas SIP'
+    new:
+      title: 'Nueva Cuenta SIP'
+    edit:
+      title: 'Editando Cuenta SIP'
+  trunk:
+    new:
+      title: 'Nueva Troncal'
+    index:
+      title: 'Troncales'
+  sip_profile:
+    new:
+      title: 'Nuevo Perfil SIP'
+    index:
+      title: 'Perfiles SIP'
+    edit:
+      title: 'Editando Perfile SIP'
+    

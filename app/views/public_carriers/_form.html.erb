@@ -1,4 +1,4 @@
-<%= form_for(@public_carrier) do |f| %>
+<%= simple_form_for(@public_carrier) do |f| %>
   <% if @public_carrier.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@public_carrier.errors.count, "error") %> prohibited this public_carrier from being saved:</h2>
@@ -12,33 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :freeswitch%><br />
-    <%= f.select :freeswitch_id, options_from_collection_for_select(@freeswitches, 'id', 'name', @public_carrier.freeswitch_id)%>
+    <%= f.association :sip_profile%>
   </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :sip_user %><br />
-    <%= f.text_field :sip_user %>
-  </div>
-  <div class="field">
-    <%= f.label :sip_pass %><br />
-    <%= f.text_field :sip_pass %>
-  </div>
-  <div class="field">
-    <%= f.label :authenticate %><br />
-    <%= f.check_box :authenticate %>
-  </div>
-  <div class="field">
-    <%= f.label :ip %><br />
-    <%= f.text_field :ip %>
-  </div>
-  <div class="field">
-    <%= f.label :port %><br />
-    <%= f.number_field :port %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

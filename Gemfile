@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -36,6 +36,7 @@ gem 'unicorn'
 
 # To use debugger
 # gem 'debugger'
+gem "simple_form"
 gem "rspec-rails"
 gem "webrat"
 gem "devise"
@@ -48,3 +49,4 @@ gem "celluloid"
 gem 'will_paginate', '>= 3.0.pre'
 gem 'yaml_db'
 gem 'mysql2'
+gem "haml-rails"
