@@ -1,0 +1,1147 @@
+
+---
+client_cashes:
+  columns:
+  - id
+  - client_id
+  - amount
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - 40000.0
+    - '2012-11-24 02:04:34.321296'
+    - '2012-11-24 02:04:34.321296'
+  - - 2
+    - 1
+    - 1000.0
+    - '2012-11-26 20:03:40.984741'
+    - '2012-11-26 20:03:40.984741'
+  - - 4
+    - 3
+    - 10000.0
+    - '2013-01-10 19:48:51.883089'
+    - '2013-01-10 19:48:51.883089'
+  - - 5
+    - 4
+    - 30000.0
+    - '2013-01-18 20:38:19.604221'
+    - '2013-01-18 20:38:19.604221'
+  - - 7
+    - 1
+    - 30000.0
+    - '2013-02-12 19:13:40.604474'
+    - '2013-02-12 19:13:40.604474'
+  - - 8
+    - 1
+    - 20000.0
+    - '2013-03-06 16:00:40.334417'
+    - '2013-03-06 16:00:40.334417'
+  - - 9
+    - 1
+    - 10000.0
+    - '2013-05-29 14:22:53.942588'
+    - '2013-05-29 14:22:53.942588'
+  - - 10
+    - 1
+    - 20000.0
+    - '2013-06-11 17:40:26.530129'
+    - '2013-06-11 17:40:26.530129'
+  - - 11
+    - 6
+    - 2000.0
+    - '2013-07-09 21:44:14.825981'
+    - '2013-07-09 21:44:14.825981'
+  - - 12
+    - 1
+    - 3000.0
+    - '2013-07-11 13:16:51.602414'
+    - '2013-07-11 13:16:51.602414'
+  - - 13
+    - 6
+    - 1000.0
+    - '2013-07-11 13:17:08.352303'
+    - '2013-07-11 14:42:09.629219'
+  - - 14
+    - 1
+    - 10000.0
+    - '2013-07-12 15:43:24.637200'
+    - '2013-07-12 15:43:24.637200'
+  - - 15
+    - 1
+    - 1000.0
+    - '2013-07-12 23:32:53.838866'
+    - '2013-07-12 23:32:53.838866'
+  - - 16
+    - 6
+    - 120000.0
+    - '2013-07-15 15:52:32.307470'
+    - '2013-07-30 20:51:31.421684'
+  - - 17
+    - 1
+    - 30000.0
+    - '2013-08-02 17:04:45.954307'
+    - '2013-08-02 17:04:45.954307'
+
+---
+public_carriers:
+  columns:
+  - id
+  - name
+  - sip_user
+  - sip_pass
+  - authenticate
+  - ip
+  - port
+  - created_at
+  - updated_at
+  - freeswitch_id
+  records: 
+  - - 1
+    - net2phone1
+    - ''
+    - ''
+    - false
+    - 216.53.4.1
+    - 5060
+    - '2012-11-24 02:00:15.108930'
+    - '2013-07-09 23:03:00.374115'
+    - 1
+  - - 2
+    - net2phone2
+    - ''
+    - ''
+    - false
+    - 66.33.147.149
+    - 5060
+    - '2012-11-24 02:00:44.276662'
+    - '2013-07-09 23:03:12.374566'
+    - 1
+  - - 3
+    - astlocal
+    - '6002'
+    - C0n3ct4nd02013
+    - true
+    - 62.75.218.17
+    - 5060
+    - '2013-01-10 19:42:14.886898'
+    - '2013-07-12 20:02:33.499255'
+    - 1
+  - - 5
+    - minutero
+    - '6003'
+    - Ll4m4nd02013*
+    - true
+    - 62.75.218.17
+    - 5060
+    - '2013-07-10 00:07:42.491954'
+    - '2013-07-10 00:11:20.681538'
+    - 1
+
+---
+public_cash_plans:
+  columns:
+  - id
+  - public_carrier_id
+  - expression
+  - bill_rate
+  - created_at
+  - updated_at
+  - bill_minimum
+  - bridge
+  - name
+  - note
+  records: 
+  - - 2
+    - 1
+    - ^9(31[5-8]\d{7})$
+    - 100.0
+    - '2012-11-24 03:23:24.549583'
+    - '2012-11-26 14:49:05.318566'
+    - 30
+    - sofia/gateway/net2phone1/9990157$1
+    - ''
+    - ''
+  - - 3
+    - 1
+    - ^9(30[014]\d{7})$
+    - 120.0
+    - '2012-11-24 03:23:50.206979'
+    - '2013-06-07 18:20:02.450383'
+    - 30
+    - sofia/gateway/net2phone2/9990157$1
+    - ''
+    - ''
+  - - 4
+    - 1
+    - ^9([0-9]{7})$
+    - 60.0
+    - '2013-01-10 17:33:41.165200'
+    - '2013-08-21 16:01:54.653002'
+    - 30
+    - sofia/gateway/net2phone2/99901574$1
+    - ''
+    - ''
+  - - 5
+    - 3
+    - ^comclic([0-9]+)$
+    - 1.0
+    - '2013-01-10 19:48:13.488853'
+    - '2013-01-10 19:48:25.998586'
+    - 1
+    - sofia/gateway/astlocal/$1
+    - ''
+    - ''
+  - - 8
+    - 1
+    - ^9((31[0-4]|320|321)\d{7})$
+    - 80.0
+    - '2013-05-07 20:55:37.552927'
+    - '2013-05-08 17:15:03.362478'
+    - 30
+    - ! 'sofia/gateway/net2phone1/9990157$1 '
+    - ''
+    - ''
+  - - 9
+    - 1
+    - ^9((1)\d{7})$
+    - 60.0
+    - '2013-06-01 16:04:31.932638'
+    - '2013-06-01 16:04:31.932638'
+    - 30
+    - sofia/gateway/net2phone1/9990157$1
+    - ''
+    - ''
+  - - 11
+    - 2
+    - ^9(2(3|4|5|8)\d{6})$
+    - 60.0
+    - '2013-06-13 19:12:30.718694'
+    - '2013-06-13 19:26:18.043663'
+    - 30
+    - sofia/gateway/net2phone2/9990157$1
+    - ''
+    - ''
+
+---
+freeswitches:
+  columns:
+  - id
+  - name
+  - ip
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - elben
+    - 62.75.218.17
+    - '2012-11-24 01:58:32.073368'
+    - '2012-11-24 01:59:12.233916'
+
+---
+users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - admin@localhost.localhost
+    - $2a$10$z7KzyO7I4xPiM4VLZ7TCKeGgS5XViBo5S1RHpZyezCKVjfNzwWEze
+    - !!null 
+    - !!null 
+    - !!null 
+    - 86
+    - '2013-08-22 02:33:20.164139'
+    - '2013-08-21 15:57:35.618811'
+    - 190.28.137.189
+    - 190.28.137.189
+    - '2012-11-24 01:51:24.355431'
+    - '2013-08-22 02:33:20.214213'
+  - - 2
+    - client@localhost.localhost
+    - $2a$10$JYMFqkAZj08CrAERrvnnkuO1.8BTAZvQkPB.zHrlaFHcR52vsVVBW
+    - !!null 
+    - !!null 
+    - !!null 
+    - 0
+    - !!null 
+    - !!null 
+    - !!null 
+    - !!null 
+    - '2012-11-24 01:51:24.467017'
+    - '2012-11-24 01:51:24.467017'
+
+---
+roles:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - SuperAdmin
+    - '2012-11-24 01:51:24.060053'
+    - '2012-11-24 01:51:24.060053'
+  - - 2
+    - Reseller
+    - '2012-11-24 01:51:24.095944'
+    - '2012-11-24 01:51:24.095944'
+
+---
+roles_users:
+  columns:
+  - role_id
+  - user_id
+  records: 
+  - - 1
+    - 1
+  - - 2
+    - 2
+
+---
+clients:
+  columns:
+  - id
+  - name
+  - hashed_password
+  - sip_user
+  - sip_pass
+  - public_carrier_id
+  - balance
+  - created_at
+  - updated_at
+  - salt
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - max_calls
+  - proxy_media
+  - bypass_media
+  records: 
+  - - 1
+    - usautom
+    - !!null 
+    - '7999'
+    - sinminutos2013*
+    - 1
+    - 22340.0
+    - '2012-11-24 02:03:06.291156'
+    - '2013-08-02 17:02:04.180873'
+    - ''
+    - juan@servicioautomotriz.co
+    - $2a$10$tSeqSb.5fYRepkxC5Ax1tuz9ewK3Jqr3tkISL.RPjBTpJ2dGHvs4u
+    - !!null 
+    - !!null 
+    - !!null 
+    - 37
+    - '2013-08-02 17:02:04.128150'
+    - '2013-08-01 14:23:59.783668'
+    - 190.165.89.48
+    - 190.165.89.48
+    - 1
+    - false
+    - false
+  - - 3
+    - comclick
+    - !!null 
+    - comclick
+    - c0m0cl1ck
+    - 1
+    - 9560.54999499999
+    - '2013-01-10 19:45:47.600795'
+    - '2013-04-30 14:55:42.461617'
+    - ''
+    - dirindesa@neurotec.co
+    - $2a$10$MkBPHwTMzJRy1/Dmrkcj2eTNzR97WMqeyVyUp4jxtNhG4US5PNsbW
+    - !!null 
+    - !!null 
+    - !!null 
+    - 0
+    - !!null 
+    - !!null 
+    - !!null 
+    - !!null 
+    - 10
+    - false
+    - false
+  - - 4
+    - neurotec
+    - !!null 
+    - neurotec
+    - N3ur0t3c2013*
+    - 3
+    - 17310.0
+    - '2013-01-18 20:34:39.960503'
+    - '2013-07-11 03:06:59.881873'
+    - ''
+    - diroperativo@neurotec.co
+    - $2a$10$jYO5uavfdkkjewHBgBlfMuRe/SZFvcbHxUPMt0MVeaCc5Y1PGppSa
+    - !!null 
+    - !!null 
+    - !!null 
+    - 2
+    - '2013-07-11 03:06:59.879589'
+    - '2013-07-08 16:00:26.348038'
+    - 190.28.177.45
+    - 190.165.220.203
+    - 2
+    - false
+    - true
+  - - 6
+    - cumbres
+    - !!null 
+    - '8000'
+    - tr3m3nd4l4cumbr3
+    - 5
+    - 115554.0
+    - '2013-07-08 16:57:43.042325'
+    - '2013-08-23 19:54:50.434889'
+    - ''
+    - jsantamaria@cumbresmedellin.edu.co
+    - $2a$10$0O.fvq.nEEKLf1gDZ5OqxupVRGPy1rLWt//ppcOkeNpJEUnycn0Um
+    - !!null 
+    - !!null 
+    - '2013-08-12 13:40:48.635806'
+    - 13
+    - '2013-08-23 19:54:50.433304'
+    - '2013-08-12 13:40:48.643979'
+    - 200.75.64.111
+    - 200.75.64.111
+    - 4
+    - false
+    - false
+
+---
+delayed_jobs:
+  columns:
+  - id
+  - priority
+  - attempts
+  - handler
+  - last_error
+  - run_at
+  - locked_at
+  - failed_at
+  - locked_by
+  - queue
+  - created_at
+  - updated_at
+  records: 
+  - - 380120
+    - 0
+    - 0
+    - ! "--- !ruby/object:XmlCdrJob\nxml_cdr:\n  cdr:\n    core_uuid: b742cbe6-ea25-11e2-88ec-49b5b401d05d\n
+      \   channel_data:\n      state: CS_REPORTING\n      direction: outbound\n      state_number:
+      '11'\n      flags: 0=1;1=1;2=1;3=1;33=1;35=1;36=1;38=1;41=1;51=1;58=1\n      caps:
+      1=1;2=1;3=1;4=1;5=1;6=1\n    variables:\n      direction: outbound\n      is_outbound:
+      'true'\n      uuid: 29e38562-0e86-11e3-a295-49b5b401d05d\n      session_id:
+      '62221'\n      sip_gateway_name: minutero\n      sip_profile_name: gateway\n
+      \     channel_name: sofia/external/999015742264233\n      sip_destination_url:
+      sip%3A999015742264233%4062.75.218.17%3A5060\n      plivo_request_uuid: 29e1e2b6-0e86-11e3-93ce-00248c9a390d\n
+      \     plivo_answer_url: http%3A//188.138.11.168%3A80/plivos/0/answer_client\n
+      \     plivo_ring_url: http%3A//188.138.11.168%3A80/plivos/0/ringing_client\n
+      \     plivo_hangup_url: http%3A//188.138.11.168%3A80/plivos/0/hangup_client\n
+      \     origination_caller_id_number: '00000000'\n      origination_caller_id_name:
+      NeurotelcalElbenG729\n      leg_delay_start: '1'\n      bridge_early_media:
+      'true'\n      plivo_accountsid: '1085528'\n      plivo_from: '00000000'\n      plivo_to:
+      '5742264233'\n      absolute_codec_string: PCMA\n      originate_timeout: '60'\n
+      \     ignore_early_media: 'true'\n      originate_early_media: 'false'\n      sip_local_sdp_str:
+      v%3D0%0Ao%3DFreeSWITCH%201377497979%201377497980%20IN%20IP4%2062.75.218.17%0As%3DFreeSWITCH%0Ac%3DIN%20IP4%2062.75.218.17%0At%3D0%200%0Am%3Daudio%2029590%20RTP/AVP%208%20101%2013%0Aa%3Drtpmap%3A101%20telephone-event/8000%0Aa%3Dfmtp%3A101%200-16%0Aa%3Dptime%3A20%0Aa%3Dsendrecv%0A\n
+      \     sip_outgoing_contact_uri: ! '%3Csip%3Agw%2Bminutero%4062.75.218.17%3A5080%3Btransport%3Dudp%3Bgw%3Dminutero%3E'\n
+      \     sip_req_uri: 999015742264233%4062.75.218.17%3A5060\n      sofia_profile_name:
+      external\n      recovery_profile_name: external\n      sip_audio_recv_pt: '8'\n
+      \     sip_use_codec_name: PCMA\n      sip_use_codec_rate: '8000'\n      sip_use_codec_ptime:
+      '20'\n      read_codec: PCMA\n      read_rate: '8000'\n      write_codec: PCMA\n
+      \     write_rate: '8000'\n      local_media_ip: 62.75.218.17\n      local_media_port:
+      '29590'\n      advertised_media_ip: 62.75.218.17\n      sip_use_pt: '8'\n      rtp_use_ssrc:
+      '3258077530'\n      sip_2833_send_payload: '101'\n      sip_2833_recv_payload:
+      '101'\n      remote_media_ip: 62.75.218.17\n      remote_media_port: '14952'\n
+      \     sip_local_network_addr: 62.75.218.17\n      sip_reply_host: 62.75.218.17\n
+      \     sip_reply_port: '5060'\n      sip_network_ip: 62.75.218.17\n      sip_network_port:
+      '5060'\n      sip_user_agent: FPBX-2.10.1(1.8.18.0)\n      sip_recover_contact:
+      ! '%3Csip%3A999015742264233%4062.75.218.17%3A5060%3E'\n      sip_full_via: SIP/2.0/UDP%2062.75.218.17%3A5080%3Bbranch%3Dz9hG4bKaUmSSj9F31QDc%3Breceived%3D62.75.218.17%3Brport%3D5080\n
+      \     sip_recover_via: SIP/2.0/UDP%2062.75.218.17%3A5080%3Bbranch%3Dz9hG4bKaUmSSj9F31QDc%3Breceived%3D62.75.218.17%3Brport%3D5080\n
+      \     sip_from_display: NeurotelcalElbenG729\n      sip_full_from: ! '%22NeurotelcalElbenG729%22%20%3Csip%3A6003%4062.75.218.17%3A5060%3E%3Btag%3D0S07FD7p7tvmB'\n
+      \     sip_full_to: ! '%3Csip%3A999015742264233%4062.75.218.17%3A5060%3E%3Btag%3Das58510c51'\n
+      \     sip_from_user: '6003'\n      sip_from_port: '5060'\n      sip_from_uri:
+      6003%4062.75.218.17%3A5060\n      sip_from_host: 62.75.218.17\n      sip_to_user:
+      '999015742264233'\n      sip_to_port: '5060'\n      sip_to_uri: 999015742264233%4062.75.218.17%3A5060\n
+      \     sip_to_host: 62.75.218.17\n      sip_contact_user: '999015742264233'\n
+      \     sip_contact_port: '5060'\n      sip_contact_uri: 999015742264233%4062.75.218.17%3A5060\n
+      \     sip_contact_host: 62.75.218.17\n      sip_to_tag: as58510c51\n      sip_from_tag:
+      0S07FD7p7tvmB\n      sip_cseq: '48436694'\n      sip_call_id: 01421ca9-8929-1231-a7a4-00248c9a390d\n
+      \     switch_r_sdp: v%3D0%0D%0Ao%3Droot%201278362366%201278362367%20IN%20IP4%2062.75.218.17%0D%0As%3DAsterisk%20PBX%201.8.18.0%0D%0Ac%3DIN%20IP4%2062.75.218.17%0D%0At%3D0%200%0D%0Am%3Daudio%2014952%20RTP/AVP%208%20101%0D%0Aa%3Drtpmap%3A8%20PCMA/8000%0D%0Aa%3Drtpmap%3A101%20telephone-event/8000%0D%0Aa%3Dfmtp%3A101%200-16%0D%0Aa%3DsilenceSupp%3Aoff%20-%20-%20-%20-%0D%0Aa%3Dptime%3A20%0D%0A\n
+      \     ep_codec_string: PCMA%408000h%4020i%4064000b\n      endpoint_disposition:
+      ANSWER\n      pre_transfer_caller_id_name: NeurotelcalElbenG729\n      pre_transfer_caller_id_number:
+      '00000000'\n      call_uuid: 29e38562-0e86-11e3-a295-49b5b401d05d\n      socket_host:
+      127.0.0.1\n      socket_resume: 'true'\n      plivo_app: 'true'\n      hangup_after_bridge:
+      'false'\n      playback_sleep_val: '0'\n      playback_terminators: none\n      playback_delimiter:
+      ! '!'\n      current_application_data: 1%201%202%209000%20'%23'%20'file_string%3A//silence_stream%3A//1!/audios/gana/1_pregunta_chance_web.wav'%20silence_stream%3A//150%20pagd_input%20%5E(1%7C2)%2B%209000\n
+      \     current_application: play_and_get_digits\n      playback_seconds: '54'\n
+      \     playback_ms: '54603'\n      playback_samples: '436827'\n      read_result:
+      failure\n      hangup_cause: NORMAL_CLEARING\n      hangup_cause_q850: '16'\n
+      \     digits_dialed: none\n      start_stamp: 2013-08-26%2014%3A32%3A49\n      profile_start_stamp:
+      2013-08-26%2014%3A32%3A49\n      answer_stamp: 2013-08-26%2014%3A33%3A02\n      progress_media_stamp:
+      2013-08-26%2014%3A32%3A50\n      end_stamp: 2013-08-26%2014%3A34%3A01\n      start_epoch:
+      '1377527569'\n      start_uepoch: '1377527569007857'\n      profile_start_epoch:
+      '1377527569'\n      profile_start_uepoch: '1377527569007857'\n      answer_epoch:
+      '1377527582'\n      answer_uepoch: '1377527582877865'\n      bridge_epoch: '0'\n
+      \     bridge_uepoch: '0'\n      last_hold_epoch: '0'\n      last_hold_uepoch:
+      '0'\n      hold_accum_seconds: '0'\n      hold_accum_usec: '0'\n      hold_accum_ms:
+      '0'\n      resurrect_epoch: '0'\n      resurrect_uepoch: '0'\n      progress_epoch:
+      '0'\n      progress_uepoch: '0'\n      progress_media_epoch: '1377527570'\n
+      \     progress_media_uepoch: '1377527570107858'\n      end_epoch: '1377527641'\n
+      \     end_uepoch: '1377527641407859'\n      last_app: play_and_get_digits\n
+      \     last_arg: 1%201%202%209000%20'%23'%20'file_string%3A//silence_stream%3A//1!/audios/gana/1_pregunta_chance_web.wav'%20silence_stream%3A//150%20pagd_input%20%5E(1%7C2)%2B%209000\n
+      \     caller_id: ! '%22Outbound%20Call%22%20%3C999015742264233%3E'\n      duration:
+      '72'\n      billsec: '59'\n      progresssec: '0'\n      answersec: '13'\n      waitsec:
+      '0'\n      progress_mediasec: '1'\n      flow_billsec: '72'\n      mduration:
+      '72400'\n      billmsec: '58530'\n      progressmsec: '0'\n      answermsec:
+      '13870'\n      waitmsec: '0'\n      progress_mediamsec: '1100'\n      flow_billmsec:
+      '72400'\n      uduration: '72400002'\n      billusec: '58529994'\n      progressusec:
+      '0'\n      answerusec: '13870008'\n      waitusec: '0'\n      progress_mediausec:
+      '1100001'\n      flow_billusec: '72400002'\n      sip_hangup_disposition: send_bye\n
+      \     rtp_audio_in_raw_bytes: '546272'\n      rtp_audio_in_media_bytes: '502412'\n
+      \     rtp_audio_in_packet_count: '3176'\n      rtp_audio_in_media_packet_count:
+      '2921'\n      rtp_audio_in_skip_packet_count: '4'\n      rtp_audio_in_jb_packet_count:
+      '0'\n      rtp_audio_in_dtmf_packet_count: '0'\n      rtp_audio_in_cng_packet_count:
+      '0'\n      rtp_audio_in_flush_packet_count: '255'\n      rtp_audio_in_largest_jb_size:
+      '0'\n      rtp_audio_out_raw_bytes: '408844'\n      rtp_audio_out_media_bytes:
+      '408844'\n      rtp_audio_out_packet_count: '2377'\n      rtp_audio_out_media_packet_count:
+      '2377'\n      rtp_audio_out_skip_packet_count: '0'\n      rtp_audio_out_dtmf_packet_count:
+      '0'\n      rtp_audio_out_cng_packet_count: '0'\n      rtp_audio_rtcp_packet_count:
+      '0'\n      rtp_audio_rtcp_octet_count: '0'\n    app_log:\n      application:\n
+      \     - app_name: socket\n        app_data: 127.0.0.1:8084 async full\n        app_stamp:
+      '1377545528111035'\n      - app_name: set\n        app_data: plivo_app=true\n
+      \       app_stamp: '1377545528158977'\n      - app_name: set\n        app_data:
+      hangup_after_bridge=false\n        app_stamp: '1377545528159636'\n      - app_name:
+      sched_hangup\n        app_data: +59 NORMAL_CLEARING\n        app_stamp: '1377545528198944'\n
+      \     - app_name: set\n        app_data: playback_sleep_val=0\n        app_stamp:
+      '1377545528238870'\n      - app_name: set\n        app_data: playback_terminators=none\n
+      \       app_stamp: '1377545528239524'\n      - app_name: playback\n        app_data:
+      /audios/gana/presentacion_chance_web.wav\n        app_stamp: '1377545528239928'\n
+      \     - app_name: set\n        app_data: playback_delimiter=!\n        app_stamp:
+      '1377545557018882'\n      - app_name: play_and_get_digits\n        app_data:
+      1 1 2 9000 '#' 'file_string://silence_stream://1!/audios/gana/1_pregunta_chance_web.wav'\n
+      \         silence_stream://150 pagd_input ^(1|2)+ 9000\n        app_stamp: '1377545557019583'\n
+      \   callflow:\n      unique_id: 29e3885a-0e86-11e3-a296-49b5b401d05d\n      clone_of:
+      29e37cf2-0e86-11e3-a294-49b5b401d05d\n      profile_index: '1'\n      extension:\n
+      \       name: socket\n        number: 127.0.0.1:8084 async full\n        application:\n
+      \         app_name: socket\n          app_data: 127.0.0.1:8084 async full\n
+      \     caller_profile:\n        username: !!null \n        dialplan: !!null \n
+      \       caller_id_name: Outbound Call\n        caller_id_number: '999015742264233'\n
+      \       callee_id_name: !!null \n        callee_id_number: !!null \n        ani:
+      !!null \n        aniii: !!null \n        network_addr: 62.75.218.17\n        rdnis:
+      !!null \n        destination_number: '999015742264233'\n        uuid: 29e38562-0e86-11e3-a295-49b5b401d05d\n
+      \       source: src/switch_ivr_originate.c\n        context: default\n        chan_name:
+      sofia/external/999015742264233\n      times:\n        created_time: '1377527569007857'\n
+      \       profile_created_time: '1377527569007857'\n        progress_time: '0'\n
+      \       progress_media_time: '1377527570107858'\n        answered_time: '1377527582877865'\n
+      \       bridged_time: '0'\n        last_hold_time: '0'\n        hold_accum_time:
+      '0'\n        hangup_time: '1377527641407859'\n        resurrect_time: '0'\n
+      \       transfer_time: '0'\nprefix_dir: ''\n"
+    - !!null 
+    - '2013-08-26 19:33:06.927078'
+    - !!null 
+    - !!null 
+    - !!null 
+    - xml_cdr
+    - '2013-08-26 19:33:06.927894'
+    - '2013-08-26 19:33:06.927894'
+  - - 380121
+    - 0
+    - 0
+    - ! "--- !ruby/object:XmlCdrJob\nxml_cdr:\n  cdr:\n    core_uuid: b742cbe6-ea25-11e2-88ec-49b5b401d05d\n
+      \   channel_data:\n      state: CS_REPORTING\n      direction: outbound\n      state_number:
+      '11'\n      flags: 0=1;1=1;2=1;3=1;33=1;35=1;36=1;38=1;41=1;51=1;58=1\n      caps:
+      1=1;2=1;3=1;4=1;5=1;6=1\n    variables:\n      direction: outbound\n      is_outbound:
+      'true'\n      uuid: 277de970-0e86-11e3-a282-49b5b401d05d\n      session_id:
+      '62219'\n      sip_gateway_name: minutero\n      sip_profile_name: gateway\n
+      \     channel_name: sofia/external/999015742262020\n      sip_destination_url:
+      sip%3A999015742262020%4062.75.218.17%3A5060\n      plivo_request_uuid: 277c4c1e-0e86-11e3-93ce-00248c9a390d\n
+      \     plivo_answer_url: http%3A//188.138.11.168%3A80/plivos/0/answer_client\n
+      \     plivo_ring_url: http%3A//188.138.11.168%3A80/plivos/0/ringing_client\n
+      \     plivo_hangup_url: http%3A//188.138.11.168%3A80/plivos/0/hangup_client\n
+      \     origination_caller_id_number: '00000000'\n      origination_caller_id_name:
+      NeurotelcalElbenG729\n      leg_delay_start: '1'\n      bridge_early_media:
+      'true'\n      plivo_accountsid: '1085524'\n      plivo_from: '00000000'\n      plivo_to:
+      '5742262020'\n      absolute_codec_string: PCMA\n      originate_timeout: '60'\n
+      \     ignore_early_media: 'true'\n      originate_early_media: 'false'\n      sip_local_sdp_str:
+      v%3D0%0Ao%3DFreeSWITCH%201377499828%201377499829%20IN%20IP4%2062.75.218.17%0As%3DFreeSWITCH%0Ac%3DIN%20IP4%2062.75.218.17%0At%3D0%200%0Am%3Daudio%2027736%20RTP/AVP%208%20101%2013%0Aa%3Drtpmap%3A101%20telephone-event/8000%0Aa%3Dfmtp%3A101%200-16%0Aa%3Dptime%3A20%0Aa%3Dsendrecv%0A\n
+      \     sip_outgoing_contact_uri: ! '%3Csip%3Agw%2Bminutero%4062.75.218.17%3A5080%3Btransport%3Dudp%3Bgw%3Dminutero%3E'\n
+      \     sip_req_uri: 999015742262020%4062.75.218.17%3A5060\n      sofia_profile_name:
+      external\n      recovery_profile_name: external\n      sip_audio_recv_pt: '8'\n
+      \     sip_use_codec_name: PCMA\n      sip_use_codec_rate: '8000'\n      sip_use_codec_ptime:
+      '20'\n      read_codec: PCMA\n      read_rate: '8000'\n      write_codec: PCMA\n
+      \     write_rate: '8000'\n      local_media_ip: 62.75.218.17\n      local_media_port:
+      '27736'\n      advertised_media_ip: 62.75.218.17\n      sip_use_pt: '8'\n      rtp_use_ssrc:
+      '3531340872'\n      sip_2833_send_payload: '101'\n      sip_2833_recv_payload:
+      '101'\n      remote_media_ip: 62.75.218.17\n      remote_media_port: '12978'\n
+      \     sip_local_network_addr: 62.75.218.17\n      sip_reply_host: 62.75.218.17\n
+      \     sip_reply_port: '5060'\n      sip_network_ip: 62.75.218.17\n      sip_network_port:
+      '5060'\n      sip_user_agent: FPBX-2.10.1(1.8.18.0)\n      sip_recover_contact:
+      ! '%3Csip%3A999015742262020%4062.75.218.17%3A5060%3E'\n      sip_full_via: SIP/2.0/UDP%2062.75.218.17%3A5080%3Bbranch%3Dz9hG4bK44v4eg4tmcjXp%3Breceived%3D62.75.218.17%3Brport%3D5080\n
+      \     sip_recover_via: SIP/2.0/UDP%2062.75.218.17%3A5080%3Bbranch%3Dz9hG4bK44v4eg4tmcjXp%3Breceived%3D62.75.218.17%3Brport%3D5080\n
+      \     sip_from_display: NeurotelcalElbenG729\n      sip_full_from: ! '%22NeurotelcalElbenG729%22%20%3Csip%3A6003%4062.75.218.17%3A5060%3E%3Btag%3DXymXavmcg0Svr'\n
+      \     sip_full_to: ! '%3Csip%3A999015742262020%4062.75.218.17%3A5060%3E%3Btag%3Das3aafae5d'\n
+      \     sip_from_user: '6003'\n      sip_from_port: '5060'\n      sip_from_uri:
+      6003%4062.75.218.17%3A5060\n      sip_from_host: 62.75.218.17\n      sip_to_user:
+      '999015742262020'\n      sip_to_port: '5060'\n      sip_to_uri: 999015742262020%4062.75.218.17%3A5060\n
+      \     sip_to_host: 62.75.218.17\n      sip_contact_user: '999015742262020'\n
+      \     sip_contact_port: '5060'\n      sip_contact_uri: 999015742262020%4062.75.218.17%3A5060\n
+      \     sip_contact_host: 62.75.218.17\n      sip_to_tag: as3aafae5d\n      sip_from_tag:
+      XymXavmcg0Svr\n      sip_cseq: '48436692'\n      sip_call_id: fedc90b9-8928-1231-a7a4-00248c9a390d\n
+      \     switch_r_sdp: v%3D0%0D%0Ao%3Droot%201285256827%201285256828%20IN%20IP4%2062.75.218.17%0D%0As%3DAsterisk%20PBX%201.8.18.0%0D%0Ac%3DIN%20IP4%2062.75.218.17%0D%0At%3D0%200%0D%0Am%3Daudio%2012978%20RTP/AVP%208%20101%0D%0Aa%3Drtpmap%3A8%20PCMA/8000%0D%0Aa%3Drtpmap%3A101%20telephone-event/8000%0D%0Aa%3Dfmtp%3A101%200-16%0D%0Aa%3DsilenceSupp%3Aoff%20-%20-%20-%20-%0D%0Aa%3Dptime%3A20%0D%0A\n
+      \     ep_codec_string: PCMA%408000h%4020i%4064000b\n      endpoint_disposition:
+      ANSWER\n      pre_transfer_caller_id_name: NeurotelcalElbenG729\n      pre_transfer_caller_id_number:
+      '00000000'\n      call_uuid: 277de970-0e86-11e3-a282-49b5b401d05d\n      socket_host:
+      127.0.0.1\n      socket_resume: 'true'\n      plivo_app: 'true'\n      hangup_after_bridge:
+      'false'\n      playback_sleep_val: '0'\n      playback_terminators: none\n      playback_delimiter:
+      ! '!'\n      current_application_data: 1%201%202%209000%20'%23'%20'file_string%3A//silence_stream%3A//1!/audios/gana/1_pregunta_chance_web.wav'%20silence_stream%3A//150%20pagd_input%20%5E(1%7C2)%2B%209000\n
+      \     current_application: play_and_get_digits\n      playback_seconds: '54'\n
+      \     playback_ms: '54603'\n      playback_samples: '436827'\n      read_result:
+      failure\n      hangup_cause: NORMAL_CLEARING\n      hangup_cause_q850: '16'\n
+      \     digits_dialed: none\n      start_stamp: 2013-08-26%2014%3A32%3A44\n      profile_start_stamp:
+      2013-08-26%2014%3A32%3A44\n      answer_stamp: 2013-08-26%2014%3A33%3A01\n      progress_media_stamp:
+      2013-08-26%2014%3A32%3A48\n      end_stamp: 2013-08-26%2014%3A34%3A01\n      start_epoch:
+      '1377527564'\n      start_uepoch: '1377527564987857'\n      profile_start_epoch:
+      '1377527564'\n      profile_start_uepoch: '1377527564987857'\n      answer_epoch:
+      '1377527581'\n      answer_uepoch: '1377527581997861'\n      bridge_epoch: '0'\n
+      \     bridge_uepoch: '0'\n      last_hold_epoch: '0'\n      last_hold_uepoch:
+      '0'\n      hold_accum_seconds: '0'\n      hold_accum_usec: '0'\n      hold_accum_ms:
+      '0'\n      resurrect_epoch: '0'\n      resurrect_uepoch: '0'\n      progress_epoch:
+      '0'\n      progress_uepoch: '0'\n      progress_media_epoch: '1377527568'\n
+      \     progress_media_uepoch: '1377527568877888'\n      end_epoch: '1377527641'\n
+      \     end_uepoch: '1377527641407859'\n      last_app: play_and_get_digits\n
+      \     last_arg: 1%201%202%209000%20'%23'%20'file_string%3A//silence_stream%3A//1!/audios/gana/1_pregunta_chance_web.wav'%20silence_stream%3A//150%20pagd_input%20%5E(1%7C2)%2B%209000\n
+      \     caller_id: ! '%22Outbound%20Call%22%20%3C999015742262020%3E'\n      duration:
+      '77'\n      billsec: '60'\n      progresssec: '0'\n      answersec: '17'\n      waitsec:
+      '0'\n      progress_mediasec: '4'\n      flow_billsec: '77'\n      mduration:
+      '76420'\n      billmsec: '59410'\n      progressmsec: '0'\n      answermsec:
+      '17010'\n      waitmsec: '0'\n      progress_mediamsec: '3890'\n      flow_billmsec:
+      '76420'\n      uduration: '76420002'\n      billusec: '59409998'\n      progressusec:
+      '0'\n      answerusec: '17010004'\n      waitusec: '0'\n      progress_mediausec:
+      '3890031'\n      flow_billusec: '76420002'\n      sip_hangup_disposition: send_bye\n
+      \     rtp_audio_in_raw_bytes: '10320'\n      rtp_audio_in_media_bytes: '172'\n
+      \     rtp_audio_in_packet_count: '60'\n      rtp_audio_in_media_packet_count:
+      '1'\n      rtp_audio_in_skip_packet_count: '2968'\n      rtp_audio_in_jb_packet_count:
+      '0'\n      rtp_audio_in_dtmf_packet_count: '0'\n      rtp_audio_in_cng_packet_count:
+      '0'\n      rtp_audio_in_flush_packet_count: '59'\n      rtp_audio_in_largest_jb_size:
+      '0'\n      rtp_audio_out_raw_bytes: '408844'\n      rtp_audio_out_media_bytes:
+      '408844'\n      rtp_audio_out_packet_count: '2377'\n      rtp_audio_out_media_packet_count:
+      '2377'\n      rtp_audio_out_skip_packet_count: '0'\n      rtp_audio_out_dtmf_packet_count:
+      '0'\n      rtp_audio_out_cng_packet_count: '0'\n      rtp_audio_rtcp_packet_count:
+      '0'\n      rtp_audio_rtcp_octet_count: '0'\n    app_log:\n      application:\n
+      \     - app_name: socket\n        app_data: 127.0.0.1:8084 async full\n        app_stamp:
+      '1377545527238039'\n      - app_name: set\n        app_data: plivo_app=true\n
+      \       app_stamp: '1377545527418826'\n      - app_name: set\n        app_data:
+      hangup_after_bridge=false\n        app_stamp: '1377545527419307'\n      - app_name:
+      sched_hangup\n        app_data: +59 NORMAL_CLEARING\n        app_stamp: '1377545527738767'\n
+      \     - app_name: set\n        app_data: playback_sleep_val=0\n        app_stamp:
+      '1377545527758893'\n      - app_name: set\n        app_data: playback_terminators=none\n
+      \       app_stamp: '1377545527759376'\n      - app_name: playback\n        app_data:
+      /audios/gana/presentacion_chance_web.wav\n        app_stamp: '1377545528118767'\n
+      \     - app_name: set\n        app_data: playback_delimiter=!\n        app_stamp:
+      '1377545556904364'\n      - app_name: play_and_get_digits\n        app_data:
+      1 1 2 9000 '#' 'file_string://silence_stream://1!/audios/gana/1_pregunta_chance_web.wav'\n
+      \         silence_stream://150 pagd_input ^(1|2)+ 9000\n        app_stamp: '1377545556905380'\n
+      \   callflow:\n      unique_id: 277dec2c-0e86-11e3-a283-49b5b401d05d\n      clone_of:
+      277de682-0e86-11e3-a281-49b5b401d05d\n      profile_index: '1'\n      extension:\n
+      \       name: socket\n        number: 127.0.0.1:8084 async full\n        application:\n
+      \         app_name: socket\n          app_data: 127.0.0.1:8084 async full\n
+      \     caller_profile:\n        username: !!null \n        dialplan: !!null \n
+      \       caller_id_name: Outbound Call\n        caller_id_number: '999015742262020'\n
+      \       callee_id_name: !!null \n        callee_id_number: !!null \n        ani:
+      !!null \n        aniii: !!null \n        network_addr: 62.75.218.17\n        rdnis:
+      !!null \n        destination_number: '999015742262020'\n        uuid: 277de970-0e86-11e3-a282-49b5b401d05d\n
+      \       source: src/switch_ivr_originate.c\n        context: default\n        chan_name:
+      sofia/external/999015742262020\n      times:\n        created_time: '1377527564987857'\n
+      \       profile_created_time: '1377527564987857'\n        progress_time: '0'\n
+      \       progress_media_time: '1377527568877888'\n        answered_time: '1377527581997861'\n
+      \       bridged_time: '0'\n        last_hold_time: '0'\n        hold_accum_time:
+      '0'\n        hangup_time: '1377527641407859'\n        resurrect_time: '0'\n
+      \       transfer_time: '0'\nprefix_dir: ''\n"
+    - !!null 
+    - '2013-08-26 19:33:07.051248'
+    - !!null 
+    - !!null 
+    - !!null 
+    - xml_cdr
+    - '2013-08-26 19:33:07.051889'
+    - '2013-08-26 19:33:07.051889'
+
+---
+client_cash_plans:
+  columns:
+  - id
+  - client_id
+  - expression
+  - bill_rate
+  - bill_minimum
+  - bridge
+  - public_carrier_id
+  - created_at
+  - updated_at
+  - name
+  - note
+  records: 
+  - - 1
+    - 3
+    - ^comclic([0-9]+)$
+    - 1.0
+    - 10
+    - sofia/gateway/astlocal/$1
+    - 1
+    - '2013-02-07 02:39:28.353022'
+    - '2013-02-07 02:39:41.050832'
+    - ''
+    - ''
+  - - 3
+    - 6
+    - ^1001(574[0-79]\d{6})$
+    - 77.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-09 22:40:36.820153'
+    - '2013-07-11 15:07:16.683585'
+    - Colombia Medellin
+    - ''
+  - - 4
+    - 6
+    - ^100157((31[0-4]|320|321)\d{7})$
+    - 116.0
+    - 60
+    - sofia/gateway/minutero/9990157$1
+    - 5
+    - '2013-07-09 23:51:10.755288'
+    - '2013-07-11 14:34:20.531471'
+    - Colombia Claro
+    - ''
+  - - 6
+    - 6
+    - ^100157((301|302|303)\d{7})$
+    - 217.0
+    - 60
+    - sofia/gateway/minutero/9990157$1
+    - 5
+    - '2013-07-11 14:33:14.952944'
+    - '2013-07-11 14:35:54.205856'
+    - Colombia Tigo
+    - ''
+  - - 7
+    - 6
+    - ^100157((31[5-8])\d{7})$
+    - 166.0
+    - 60
+    - sofia/gateway/minutero/9990157$1
+    - 5
+    - '2013-07-11 14:35:38.042060'
+    - '2013-07-11 14:38:14.532195'
+    - Colombia Movistar
+    - ''
+  - - 8
+    - 6
+    - ^1001(576\d{7})$
+    - 52.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 14:39:45.858061'
+    - '2013-07-11 14:40:01.989786'
+    - Colombia Armenia
+    - ''
+  - - 9
+    - 6
+    - ^1001(571\d{7})$
+    - 55.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 14:41:19.579465'
+    - '2013-07-11 14:41:56.251335'
+    - Colombia Bogota
+    - ''
+  - - 10
+    - 6
+    - ^1001(577\d{7})$
+    - 65.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 14:42:16.340318'
+    - '2013-07-11 14:42:48.108088'
+    - Colombia Bucaramanga
+    - ''
+  - - 11
+    - 6
+    - ^1001(57[1-9]8\d{6})$
+    - 386.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 14:43:29.147388'
+    - '2013-07-11 14:47:51.772284'
+    - Colombia Lex Telecom
+    - ''
+  - - 12
+    - 6
+    - ^1001(5768517\d{3})$
+    - 49.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 14:48:05.728520'
+    - '2013-07-11 14:59:17.565185'
+    - Colombia Manizalez
+    - ''
+  - - 13
+    - 6
+    - ^1001((57687|57688|57689)\d{5})$
+    - 49.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 14:50:57.241960'
+    - '2013-07-11 15:00:38.952379'
+    - Colombia Manizalez
+    - ''
+  - - 14
+    - 6
+    - ^1001(5769098\d{3})$
+    - 49.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 14:56:48.987827'
+    - '2013-07-11 15:01:09.186285'
+    - Colombia Manizalez
+    - ''
+  - - 15
+    - 6
+    - ^1001(572[3-6]\d{6})$
+    - 45.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:12:39.149680'
+    - '2013-07-11 15:18:39.074496'
+    - Colombia Cali
+    - ''
+  - - 16
+    - 6
+    - ^1001(5728[89]\d{6})$
+    - 45.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:17:13.635467'
+    - '2013-07-11 15:19:41.428390'
+    - Colombia Cali
+    - ''
+  - - 17
+    - 6
+    - ^1001(572909[124][0-6]\d{2})$
+    - 45.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:19:54.824036'
+    - '2013-07-11 15:21:11.689385'
+    - Colombia Cali
+    - ''
+  - - 18
+    - 6
+    - ^1001(572909[124][0-6]\d{2})$
+    - 45.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:37:06.831531'
+    - '2013-07-11 15:37:06.831531'
+    - Colombia Cali
+    - ''
+  - - 19
+    - 6
+    - ^1001(521[1-9]\d+)$
+    - 104.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:38:15.405578'
+    - '2013-07-11 15:43:15.376923'
+    - Mexico Celular
+    - ''
+  - - 20
+    - 6
+    - ^1001(52[2-9]\d+)$
+    - 100.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:45:01.678109'
+    - '2013-07-11 15:45:52.281767'
+    - Mexico General
+    - ''
+  - - 21
+    - 6
+    - ^1001(1\d+)$
+    - 25.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:46:08.240713'
+    - '2013-07-11 15:46:34.873125'
+    - USA General
+    - ''
+  - - 22
+    - 6
+    - ^1001(1\d{3}555\d+)$
+    - 2025.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:49:43.912071'
+    - '2013-07-11 15:51:17.015385'
+    - USA Directorio
+    - ''
+  - - 23
+    - 6
+    - ^1001(584[12467]\d+)$
+    - 123.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:51:41.029699'
+    - '2013-07-11 15:55:36.781354'
+    - Venezuela Celular
+    - ''
+  - - 24
+    - 6
+    - ^1001(584\d+)$
+    - 193.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:55:56.940386'
+    - '2013-07-11 15:56:20.679685'
+    - Venezuela Celular
+    - ''
+  - - 25
+    - 6
+    - ^1001(58212\d+)$
+    - 15.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:56:40.058361'
+    - '2013-07-11 15:58:01.675312'
+    - Venezuela - Caracas
+    - ''
+  - - 26
+    - 6
+    - ^1001(58276\d+)$
+    - 25.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:58:10.456737'
+    - '2013-07-11 16:24:42.049911'
+    - Venezuela - Cristbol
+    - ''
+  - - 27
+    - 6
+    - ^1001(58276\d+)$
+    - 25.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 15:59:12.155530'
+    - '2013-07-11 16:12:08.690531'
+    - Venezuela - Maracaibo
+    - ''
+  - - 28
+    - 6
+    - ^1001(58241\d+)$
+    - 25.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:12:23.743892'
+    - '2013-07-11 16:24:21.040560'
+    - Venezuela - Valencia
+    - ''
+  - - 29
+    - 6
+    - ^1001(58\d+)$
+    - 25.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:25:04.380767'
+    - '2013-07-11 16:25:25.813167'
+    - ! 'Venezuela '
+    - ''
+  - - 30
+    - 6
+    - ^1001(39319\d+)$
+    - 703.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:31:48.034529'
+    - '2013-07-11 16:36:02.164186'
+    - Italy Cellular-Intermatica
+    - ''
+  - - 31
+    - 6
+    - ^1001(39373\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:35:10.274380'
+    - '2013-07-11 16:35:38.908326'
+    - Italy Cellular-H3G
+    - ''
+  - - 32
+    - 6
+    - ^1001(3932\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:36:12.252447'
+    - '2013-07-11 16:36:49.993915'
+    - Italy Cellular-Vodafone
+    - ''
+  - - 33
+    - 6
+    - ^1001(3939\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:37:25.003533'
+    - '2013-07-11 16:37:43.907047'
+    - Italy Cellular-H3G
+    - ''
+  - - 34
+    - 6
+    - ^1001(3933\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:37:56.995028'
+    - '2013-07-11 16:38:27.172723'
+    - Italy Cellular-Tim
+    - ''
+  - - 35
+    - 6
+    - ^1001(3938\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:38:37.966119'
+    - '2013-07-11 16:38:58.067919'
+    - Italy Cellular-Wind
+    - ''
+  - - 36
+    - 6
+    - ^1001(3936\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:39:12.454981'
+    - '2013-07-11 16:40:52.712640'
+    - Italy Cellular-Tim
+    - ''
+  - - 37
+    - 6
+    - ^1001(39383\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:41:24.285511'
+    - '2013-07-11 16:41:47.187325'
+    - Italy Cellular-Vodafone
+    - ''
+  - - 38
+    - 6
+    - ^1001(39370\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:42:03.473638'
+    - '2013-07-11 16:42:21.417748'
+    - Italy Cellular-Tim
+    - ''
+  - - 39
+    - 6
+    - ^1001(3934\d+)$
+    - 92.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:42:36.168546'
+    - '2013-07-11 16:43:03.377988'
+    - Italy Cellular-Vodafone
+    - ''
+  - - 40
+    - 6
+    - ^1001(3902\d+)$
+    - 32.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:43:15.803994'
+    - '2013-07-11 16:43:57.728679'
+    - Italy,Milan
+    - ''
+  - - 41
+    - 6
+    - ^1001(3906\d+)$
+    - 32.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:44:08.234970'
+    - '2013-07-11 16:44:32.963710'
+    - Italy,Rome (Vatican City)
+    - ''
+  - - 42
+    - 6
+    - ^1001(39\d+)$
+    - 32.0
+    - 60
+    - sofia/gateway/minutero/99900$1
+    - 5
+    - '2013-07-11 16:44:47.371757'
+    - '2013-07-11 16:45:14.981712'
+    - Italy
+    - ''
