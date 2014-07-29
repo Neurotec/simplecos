@@ -10,6 +10,10 @@ es:
   'yes': 'Si'
   'no': 'No'
   devise:
+    sessions:
+      consumers_client:
+        signed_in: 'Bienvenido(a)'
+        signed_out: 'Gracias por usar nuestro servicio'
     failure:
       already_authenticated: 'Ya esta autenticado(a)'
       consumers_client:

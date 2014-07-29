@@ -50,3 +50,5 @@ gem 'will_paginate', '>= 3.0.pre'
 gem 'yaml_db'
 gem 'mysql2'
 gem "haml-rails"
+gem "twitter-bootstrap-rails"
+gem "less-rails"

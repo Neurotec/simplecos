@@ -1,6 +1,6 @@
 <h1><%= I18n.t('consumers_request_cash.index.title')%></h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th><%= I18n.t('consumers_request_cash.l.client')%></th>
     <th><%= I18n.t('consumers_request_cash.l.amount')%></th>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to I18n.t('consumers_request_cash.new.title'), new_consumers_request_cash_path %>
+<%= link_to I18n.t('consumers_request_cash.new.title'), new_consumers_request_cash_path, class: "btn btn-primary" %>

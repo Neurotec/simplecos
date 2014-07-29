@@ -1,37 +1,43 @@
 <h1><%= I18n.t('cdr.index.title')%></h1>
-<table>
+<table class="table table-striped">
   <tr>
     <!--MONTHS-->
     <td style="vertical-align:top">
       <table>
-	<tr>
-	  <th><%= I18n.t('cdr.l.cdr_months')%></th>
-	</tr>
+	<thead>
+	  <tr> <th><%= I18n.t('cdr.l.cdr_months')%></th></tr>
+	</thead>
+	<tbody>
 	  <% @cdr_months.each do |month_file| %>
 	<tr><td><%= link_to month_file[:title], consumers_cdr_send_path({:id => month_file[:crypt]})%></td></tr>
 	  <% end %>
+	  </tbody>
       </table>
     </td>
     <!--WEEKS-->
     <td style="vertical-align:top">
       <table>
-	<tr>
-	  <th><%= I18n.t('cdr.l.cdr_weeks')%></th>
-	</tr>
+	<thead>
+	<tr><th><%= I18n.t('cdr.l.cdr_weeks')%></th></tr>
+	</thead>
+	<tbody>
 	  <% @cdr_weeks.each do |week_file| %>
 	<tr><td><%= link_to week_file[:title], consumers_cdr_send_path({:id => week_file[:crypt]})%></td></tr>
 	  <% end %>
+	  </tbody>
       </table>
     </td>
     <!--DIARY-->
     <td style="vertical-align:top">
       <table>
-	<tr>
-	  <th><%= I18n.t('cdr.l.cdr_days')%></th>
-	</tr>
+	<thead>
+	<tr><th><%= I18n.t('cdr.l.cdr_days')%></th></tr>
+	</thead>
+	<tbody>
 	  <% @cdr_days.each do |day_file| %>
 	<tr><td><%= link_to day_file[:title], consumers_cdr_send_path({:id => day_file[:crypt]})%></td></tr>
 	  <% end %>
+	  </tbody>
       </table>
     </td>
 

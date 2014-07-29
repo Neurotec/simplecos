@@ -1,6 +1,6 @@
 <h1><%= I18n.t('sip_clients.index.title')%> <%= @client.name %></h1>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th><%= I18n.t('sip_clients.l.sip_user')%></th>
     <th><%= I18n.t('sip_clients.l.sip_pass')%></th>
@@ -26,4 +26,4 @@
 
 <br />
 
-<%= link_to I18n.t('sip_clients.new.title'), new_consumers_sip_client_path(:client_id => @client.id) %>
+<%= link_to I18n.t('sip_clients.new.title'), new_consumers_sip_client_path(:client_id => @client.id), class: "btn btn-primary" %>

@@ -3,4 +3,4 @@
 <%= render 'form' %>
 
 <%= link_to I18n.t('show'), consumers_sip_client_path(@sip_client) %> |
-<%= link_to I18n.t('back'), consumers_sip_clients_path(:client_id => @sip_client.client.id) %>
+<%= link_to I18n.t('back'), consumers_sip_clients_path(:client_id => @sip_client.client.id), class: "btn btn-default"%>
