@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+background-image: url("pie.png") !important;
+background-position: left;
+background-repeat: no-repeat;
+}
