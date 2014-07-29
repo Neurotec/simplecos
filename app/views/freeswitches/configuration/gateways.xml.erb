@@ -39,15 +39,16 @@
 	  <param name="dialplan" value="XML"/>
 	  <param name="context" value="public"/>
 	  <param name="dtmf-duration" value="2000"/>
-	  <param name="inbound-codec-prefs" value="$${global_codec_prefs}"/>
-	  <param name="outbound-codec-prefs" value="$${outbound_codec_prefs}"/>
+	  <param name="inbound-codec-prefs" value="<%= sip_profile.inbound_codec %>"/>
+	  <param name="outbound-codec-prefs" value="<%= sip_profile.outbound_codec %>"/>
 	  <param name="hold-music" value="$${hold_music}"/>
 	  <param name="rtp-timer-name" value="soft"/>
 	  <!--<param name="enable-100rel" value="true"/>-->
     <!--<param name="disable-srv503" value="true"/>-->
     <!-- This could be set to "passive" -->
+    <param name="username" value="NeurotecSIP" />
     <param name="local-network-acl" value="localnet.auto"/>
-    <param name="manage-presence" value="false"/>
+    <param name="manage-presence" value="true"/>
     
     <!-- used to share presence info across sofia profiles
 	 manage-presence needs to be set to passive on this profile
@@ -66,6 +67,7 @@
     <param name="inbound-codec-negotiation" value="generous"/>
     <param name="nonce-ttl" value="60"/>
     <param name="auth-calls" value="false"/>
+    <param name="log-auth-failures" value="true"/>
     <param name="inbound-late-negotiation" value="true"/>
     <param name="inbound-zrtp-passthru" value="true"/> <!-- (also enables late negotiation) -->
     <!--

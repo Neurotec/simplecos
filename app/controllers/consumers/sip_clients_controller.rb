@@ -77,12 +77,12 @@ class Consumers::SipClientsController < Consumers::ApplicationController
   # DELETE /sip_clients/1
   # DELETE /sip_clients/1.json
   def destroy
-    @sip_client = Consumers::SipClient.where(:id => params[:id], :client_id => current_consumers_client.id)
+    @sip_client = Consumers::SipClient.where(:id => params[:id], :client_id => current_consumers_client.id).first
     @client = @sip_client.client
     @sip_client.destroy
 
     respond_to do |format|
-      format.html { redirect_to sip_clients_path(:client_id => @client.id) }
+      format.html { redirect_to consumers_sip_clients_path(:client_id => @client.id) }
       format.json { head :no_content }
     end
   end

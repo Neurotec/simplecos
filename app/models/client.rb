@@ -29,7 +29,7 @@ class Client < ActiveRecord::Base
   end
   
   def allow_admin_sip_accounts?
-    allow_admin_sip_accounts>0 ? true : false
+    allow_admin_sip_accounts
   end
   
 
